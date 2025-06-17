@@ -51,3 +51,5 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 require("config.lazy")
+
+vim.api.nvim_set_hl(0, "DashboardHeader", {fg = "#61afef"})
