@@ -15,19 +15,21 @@ local dashboard_config = {
   config = {
     header = logo_pikachu,
     shortcut = {},
+    project = {enable = false},
+    footer = {},
   }
 }
 
 local dashboard = {
   "nvimdev/dashboard-nvim",
-  evene = "VimEnter",
+  event = "VimEnter",  
   config = function()
     local dashboard = require("dashboard")
     dashboard.setup(dashboard_config)
   end,
-  requires = {"nvim-tree/nvim-web-devicons"}
+  dependencies = {"nvim-tree/nvim-web-devicons"}
 }
 
-return{
+return {
   dashboard,
 }
