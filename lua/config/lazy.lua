@@ -57,3 +57,14 @@ require('quarto').setup{
     never_run = { 'yaml' }, -- filetypes which are never sent to a code runner
   },
 }
+
+local original_set = vim.diagnostic.set
+vim.diagnostic.set = function(namespace, bufnr, diagnostics, opts)
+  if diagnostics then
+    -- Filter out lintr diagnostics
+    diagnostics = vim.tbl_filter(function(diagnostic)
+      return diagnostic.source ~= "lintr"
+    end, diagnostics)
+  end
+  original_set(namespace, bufnr, diagnostics, opts)
+end
